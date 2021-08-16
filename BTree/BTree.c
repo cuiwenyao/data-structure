@@ -557,7 +557,7 @@ BTree delete_btree(BTree tree, bool useindex, BTree del_tree, int del_key_index,
         //左
         if (borrow == -1)
         {
-            printf("borrwo -1\n");
+            //printf("borrow -1\n");
             int index_child = childindex(del_tree->parent, del_tree);
             while (1)
             {
@@ -572,7 +572,7 @@ BTree delete_btree(BTree tree, bool useindex, BTree del_tree, int del_key_index,
         //右
         else if (borrow == 1)
         {
-            printf("borrwo 1\n");
+            //printf("borrow 1\n");
             //这里的叶子为非根节点
             int index_child = childindex(del_tree->parent, del_tree) - 1;
             while (1)

@@ -1,10 +1,10 @@
 
-#define M 128
+#define M 2
 
 #include "BTree.c"
 
 //一亿条数据
-#define ITEM_NUM 1000000
+#define ITEM_NUM 10000000
 
 //阶数增大但又不太大 则查询时间增大，其余时间减少
 
@@ -20,7 +20,8 @@ int main()
         tree = insert(tree, i);
     }
     end = time(NULL);
-    printf("插入 %d%% 个数用时 %d s\n", ITEM_NUM, end - start);
+    int time_=end-start;
+    printf("插入 %d 个数用时 %d s\n", ITEM_NUM, time_);
 
     start = time(NULL);
     preorder(tree);
@@ -36,12 +37,12 @@ int main()
         BTree result = search(tree, i, &index); //4782968
         if (result != NULL)
         {
-            printf("\nsearch: %d index: %d\n", result->key[index], index);
+            //printf("\nsearch: %d index: %d\n", result->key[index], index);
         }
         else
         {
             printf("\n未找到 %d \n");
-            //exit(EXIT_FAILURE);
+            exit(EXIT_FAILURE);
         }
     }
     end = time(NULL);
@@ -80,7 +81,7 @@ int main()
 
         tree = delete_btree(tree, false, NULL, -1, i);
         int index = -1;
-        BTree result = search(tree, i, &index); //4782968
+        BTree result=NULL ;//= search(tree, i, &index); //4782968
         if (result != NULL)
         {
             printf("\n 删除失败-----------search: %d index: %d\n", result->key[index], index);
